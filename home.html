@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>on-off lamp</title>
+</head>
+<body>
+   <!--<img src="https://www.w3schools.com/js/pic_bulbon.gif"> -->
+   <h1>Pls turn off you lamp at 6am to 17h30Pm</h1>
+<img id="idmyimg" src="https://www.w3schools.com/js/pic_bulboff.gif">
+
+<input  id="idbt1" type="button" value="Turn On" onclick="turnOnLamp()">
+<input id="idbt2" type="button" value="Turn Off" onclick="turnOffLamp()">
+
+<script>
+
+    var SwichButton = function (lamp) {
+        this.status;
+        this.lamp = lamp;
+
+
+        this.connectToLamp = function () {
+            if (this.status) {
+              //  alert(this.lamp.status)
+                this.lamp.turnOn();
+            } else if (this.status == false) {
+              //  alert(this.lamp.status)
+                this.lamp.turnOff();
+            }
+        }
+        this.switchOff = function () {
+            this.status = false;
+        }
+        this.switchOn = function () {
+            this.status = true;
+        }
+    }
+
+    var ElectricLamp = function () {
+
+        this.status=true;
+
+        this.turnOff = function () {
+            // alert(0);
+            // this.status=false;
+            document.getElementsByTagName("img")[0].setAttribute("src", "https://www.w3schools.com/js/pic_bulboff.gif");
+        }
+
+        this.turnOn = function () {
+             //alert(1);
+            // this.status=true;
+            document.getElementsByTagName("img")[0].setAttribute("src", "https://www.w3schools.com/js/pic_bulbon.gif");
+        }
+    }
+
+    var eclectricLam = new ElectricLamp();
+    var switchBt = new SwichButton(eclectricLam);
+
+
+    var turnOnLamp = function () {
+        switchBt.switchOn();
+        switchBt.connectToLamp();
+
+
+    }
+    var turnOffLamp = function () {
+        switchBt.switchOff();
+        switchBt.connectToLamp();
+    }
+
+
+</script>
+</body>
+</html>
